@@ -1,0 +1,83 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+:root,
+[data-theme="dark"] {
+  --bg: #0b0f17;
+  --surface: #121826;
+  --surface-2: #1a2233;
+  --line: #262e42;
+  --text: #e7eaf0;
+  --text-secondary: #9ba5bd;
+  --text-muted: #626c85;
+  --accent: #4c6ef5;
+  --teal: #14b8a6;
+  --steel: #64748b;
+  --danger: #ef4444;
+  --success: #22c55e;
+}
+
+[data-theme="light"] {
+  --bg: #f6f7f9;
+  --surface: #ffffff;
+  --surface-2: #eef1f5;
+  --line: #e2e6ed;
+  --text: #101828;
+  --text-secondary: #475467;
+  --text-muted: #98a2b3;
+  --accent: #3355d9;
+  --teal: #0d9488;
+  --steel: #475569;
+  --danger: #dc2626;
+  --success: #16a34a;
+}
+
+body {
+  background-color: var(--bg);
+  color: var(--text);
+  transition: background-color 0.15s ease, color 0.15s ease;
+}
+
+/* tabular numerals everywhere numbers appear in tables/stats */
+.tabular-nums {
+  font-variant-numeric: tabular-nums;
+}
+@media print {
+  body {
+    background: white !important;
+    color: #111827 !important;
+  }
+
+  body * {
+    visibility: hidden;
+  }
+
+  .invoice-printable,
+  .invoice-printable * {
+    visibility: visible;
+  }
+
+  .invoice-printable {
+    position: absolute;
+    inset: 0;
+    width: 100%;
+    padding: 32px !important;
+    background: white !important;
+    color: #111827 !important;
+  }
+}
+
+@layer components {
+  .form-input {
+    @apply w-full rounded-lg border border-line bg-surface-2 px-3 py-2 text-sm text-text outline-none transition-colors;
+  }
+
+  .form-input::placeholder {
+    color: var(--text-muted);
+  }
+
+  .form-input:focus {
+    border-color: var(--accent);
+  }
+}
